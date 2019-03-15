@@ -1,12 +1,18 @@
 package org.udg.pds.todoandroid.util;
 
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import org.udg.pds.todoandroid.R;
@@ -14,6 +20,8 @@ import org.udg.pds.todoandroid.entity.Domicili;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
 public class AdapterLListarDomicilis extends RecyclerView.Adapter<AdapterLListarDomicilis.MyViewHolder> {
     private final Context context;
@@ -35,6 +43,33 @@ public class AdapterLListarDomicilis extends RecyclerView.Adapter<AdapterLListar
             nhab=itemView.findViewById(R.id.numerohabs);
             claus=itemView.findViewById(R.id.claus);
             neteja=itemView.findViewById(R.id.neteja);
+
+            this.neteja.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    // inflate the layout of the popup window
+                    LayoutInflater inflater = LayoutInflater.from(context);
+                    View popupView = inflater.inflate(R.layout.popupneteja, null);
+
+                    // create the popup window
+                    int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+                    int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                    boolean focusable = true; // lets taps outside the popup also dismiss it
+                    final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+                    // show the popup window
+                    // which view you pass in doesn't matter, it is only used for the window tolken
+                    popupWindow.showAtLocation(v, Gravity.CENTER, 0, 0);
+
+                    // dismiss the popup window when touched
+                    popupView.setOnTouchListener(new View.OnTouchListener() {
+                        @Override
+                        public boolean onTouch(View v, MotionEvent event) {
+                            popupWindow.dismiss();
+                            return true;
+                        }
+                    });
+                }
+            });
         }
     }
 
@@ -79,4 +114,5 @@ public class AdapterLListarDomicilis extends RecyclerView.Adapter<AdapterLListar
         return mDataset.size();
 
     }
+
 }
