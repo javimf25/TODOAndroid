@@ -1,9 +1,131 @@
 FORMAT: 1A
-HOST: http://example.com/
+HOST: http://exemple.com/
 
 # Exemple PDS
 
 Polls is a simple API allowing consumers to view polls and vote in them.
+
+## Treballador [/treballador/register]
+
+### Registrar treballador [POST]
+
+
++ Request (application/json)
+
+        {
+            "id": "1",
+            "username":"thereivax123",
+            "nom":"Javier",
+            "DNI":"40370992",
+            "email":"jmorenof25@gmail.com",
+            "password":"1234"
+        }
+
++ Response 201 (application/json)
+
+            
+                "correcte"
+            
+
+## Propietari [/propietari/register]
+
+### Registrar propietari [POST]
++ Request (application/json)
+
+        {
+            "id": "1",
+            "username":"thereivax123",
+            "nom":"Javier",
+            "DNI":"40370992",
+            "email":"jmorenof25@gmail.com",
+            "password":"1234"
+        }
+
++ Response 201 (application/json)
+
+        
+            "correcte"
+        
+## Ofertes [/ofertes]
+
+### Registrar oferta [POST]
++ Request (application/json)
+
+        {
+            "id": "1",
+            "username":"thereivax123",
+            "nom":"Javier",
+            "DNI":"40370992",
+            "email":"jmorenof25@gmail.com",
+            "password":"1234"
+        }
+
++ Response 201 (application/json)
+
+        
+            "correcte"
+            
+## Domicilis Collection [/domicilis/1]
+
+### Obtenir Domicilis [GET]
+
++ Request (application/json)
+
+        {
+            "id": 1
+        }
+
++ Response 200 (application/json)
+
+            [
+                {
+                    
+                    "id":1,
+                    "direccio":"C/ Jaume primer nº4 3e 2na",
+                    "poblacio":"Girona",
+                    "provincia":"Girona",
+                    "metresQuadrats":130,
+                    "nHab":3
+                        
+                },
+                {
+                    
+                    "id":2,
+                    "direccio":"C/ Pau Casals nº3 1e 2na",
+                    "poblacio":"Girona",
+                    "provincia":"Girona",
+                    "metresQuadrats":80,
+                    "nHab":1
+    
+                },
+                {
+                    
+                    "id":3,
+                    "direccio":"C/ del carme nº3 2n 2na",
+                    "poblacio":"Girona",
+                    "provincia":"Girona",
+                    "metresQuadrats":123,
+                    "nHab":2
+    
+                },
+                {
+                    "id":4,
+                    "direccio":"C/ dbarcelona nº1 2n 2na",
+                    "poblacio":"Girona",
+                    "provincia":"Girona",
+                    "metresQuadrats":173,
+                    "nHab":2
+                },
+                {
+                    "id":5,
+                    "direccio":"C/ Emili grahit nº3 1n 2na",
+                    "poblacio":"Girona",
+                    "provincia":"Girona",
+                    "metresQuadrats":53,
+                    "nHab":1
+                }
+            ]
+
 
 ## Tasks Collection [/users/check]
 ### List All Tasks [GET]
@@ -56,7 +178,7 @@ form of choices.
             {
                 "id": 1,
                 "dateCreated": "2018-01-01T00:00:00",
-                "dateLimit": "2018-03-01T00:00:00",
+                "dateLimit": "2018-03-01T00:00:00aaaaa",
                 "completed": false,
                 "text": "Una tasca"
             }
